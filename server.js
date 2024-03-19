@@ -20,9 +20,14 @@ app.use("/api", productPurchased);
 
 // Start server
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   mongoose.connect(process.env.MONGODB_URL).then(() => {
     console.log("Database Connected");
   });
+});
+
+app.get("/", (req, res) => {
+  res.send("Server Started");
 });
